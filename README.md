@@ -3,6 +3,7 @@
 
 ---
 **利用目的:**
+
 Syntheticsにて、定期的にICMPポーリングを対象IPアドレス群に実施し、その結果をカスタムEventスペースに記録するための機能となっています。そのため、Synthetics上では対象モニターの実施結果がSUCCESSとなることを期待しており、モニター内部でのICMPポーリングの結果に寄らずに、適切にモニターの処理が稼働したということを表しています。また、各ICMPポーリングの結果については、カスタムEVENTスペースに格納しているので、NRQLやData explorerを活用して確認する必要があります。(別途、ダッシュボード化についての情報も追記予定)
 
 pinger.js: 
@@ -34,4 +35,5 @@ pinger.js:
 ---
 # ダッシュボード #
 例
-<img width="1002" alt="image" src="https://github.com/khara-NewRelic/syntheticsICMPPinger/assets/92971754/1732af67-36e6-4f0c-8185-100280039232">
+<img width="1284" alt="image" src="https://github.com/khara-NewRelic/syntheticsICMPPinger/assets/92971754/ae35e188-a563-4bc5-8e07-1b068801fd93">
+
