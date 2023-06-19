@@ -10,7 +10,7 @@ pinger.js:
 
 ---
 **適用手順:**
-1. New Relicプラットフォーム(https://login.newrelic.com)にログインする
+1. New Relicプラットフォーム( https://login.newrelic.com )にログインする
 2. ログイン後、左のメニュー群からSynthteics Monitoringにアクセスする
 3. 右のモニター一覧の上部にある、"**Secure credentials**"にアクセスする
 4. Secure credentials内にて、**MYACCOUNTID**というKEYで、ご利用になっているAcccount IDの値を設定する(例: 1234567)
