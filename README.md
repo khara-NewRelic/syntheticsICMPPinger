@@ -32,3 +32,6 @@ pinger.js:
 - **Data explorer**にアクセスし、**CustomSysntheticsICMPPolling**が参照できるかを確認する
 
 ---
+# ダッシュボード #
+例
+<img width="1002" alt="image" src="https://github.com/khara-NewRelic/syntheticsICMPPinger/assets/92971754/1732af67-36e6-4f0c-8185-100280039232">
