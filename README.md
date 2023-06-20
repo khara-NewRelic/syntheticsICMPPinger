@@ -4,10 +4,10 @@
 ---
 **利用目的:**
 
-Syntheticsにて、定期的にICMPポーリングを対象IPアドレス群に実施し、その結果をカスタムEventスペースに記録するための機能となっています。そのため、Synthetics上では対象モニターの実施結果がSUCCESSとなることを期待しており、モニター内部でのICMPポーリングの結果に寄らずに、適切にモニターの処理が稼働したということを表しています。また、各ICMPポーリングの結果については、カスタムEVENTスペースに格納しているので、NRQLやData explorerを活用して確認する必要があります。(別途、ダッシュボード化についての情報も追記予定)
+Syntheticにて、定期的にICMPポーリングを対象IPアドレス群に実施し、その結果をカスタムEventスペースに記録するための機能となっています。そのため、Synthetic上では対象モニターの実施結果がSUCCESSとなることを期待しており、モニター内部でのICMPポーリングの結果に寄らずに、適切にモニターの処理が稼働したということを表しています。また、各ICMPポーリングの結果については、カスタムEVENTスペースに格納しているので、NRQLやData explorerを活用して確認する必要があります。(別途、ダッシュボード化についての情報も追記予定)
 
 pinger.js: 
-このファイル内容をNew Relic Syntheticsのスクリプトとしてコピー＆ペーストして利用します。
+このファイル内容をNew Relic Syntheticのスクリプトとしてコピー＆ペーストして利用します。
 
 ---
 **適用手順:**
@@ -16,7 +16,7 @@ pinger.js:
 3. 右のモニター一覧の上部にある、"**Secure credentials**"にアクセスする
 4. Secure credentials内にて、**MYACCOUNTID**というKEYで、ご利用になっているAcccount IDの値を設定する(例: 1234567)
 5. Secure credentials内にて、**MYUSERAPIKEY**というKEYで、User Keyの値を設定する
-6. Synthetics上で**Create monitor**ボタンを押し、**Scripted API**を選択する
+6. Synthetic上で**Create monitor**ボタンを押し、**Scripted API**を選択する
 7. 上記の作業にて、スクリプトを記載するUIになったら、pinger.jsの内容をコピー＆ペーストする
 8. **Save monitor**ボタンを押し、設定内容を保存する
 
@@ -29,7 +29,7 @@ pinger.js:
 
 ---
 **動作確認**
-- Syntheticsの当該Scripted APIモニターの試行結果がSUCCESS rateが100%となっているかを確認する
+- Syntheticの当該Scripted APIモニターの試行結果がSUCCESS rateが100%となっているかを確認する
 - **Data explorer**にアクセスし、**CustomSysntheticsICMPPolling**が参照できるかを確認する
 
 ---
