@@ -10,21 +10,31 @@ pinger.js:
 このファイル内容をNew Relic Syntheticのスクリプトとしてコピー＆ペーストして利用します。
 
 ---
+**事前準備**
+- 利用しているAccount IDを確認する
+    - 以下のドキュメンの手順に沿って、Account IDの値を確認する(例: 1234567)
+    https://docs.newrelic.com/jp/docs/accounts/accounts-billing/account-structure/account-id/
+
+- Event送信する際に利用するAPI Keyを確認あるいは新規作成する
+    - 以下のドキュメントの手順に沿って、API Keyを確認する、あるいは新規で作成する(User Keyを選択する)
+    https://docs.newrelic.com/jp/docs/apis/intro-apis/new-relic-api-keys/
+    **補足:** API Keyを確認や作成を行う際に、利用するAccount IDに紐づけていること
+
 **適用手順:**
 1. New Relicプラットフォーム( https://login.newrelic.com )にログインする
 2. ログイン後、左のメニュー群からSynthteics Monitoringにアクセスする
 3. 右のモニター一覧の上部にある、"**Secure credentials**"にアクセスする
-4. Secure credentials内にて、**MYACCOUNTID**というKEYで、ご利用になっているAcccount IDの値を設定する(例: 1234567)
-5. Secure credentials内にて、**MYUSERAPIKEY**というKEYで、User Keyの値を設定する
+4. Secure credentials内にて、**MYACCOUNTID**というKEYで、ご利用になっているAcccount IDの値を設定する
+5. Secure credentials内にて、**MYUSERAPIKEY**というKEYで、事前準備したAPI Key(User Key)の値を設定する
 6. Synthetic上で**Create monitor**ボタンを押し、**Scripted API**を選択する
 7. 上記の作業にて、スクリプトを記載するUIになったら、pinger.jsの内容をコピー＆ペーストする
-8. **Save monitor**ボタンを押し、設定内容を保存する
+8. 【実施を強く推奨】**Validate**を実施し、処理が成功することを確認する
+9. **Save monitor**ボタンを押し、設定内容を保存する
+    - 設定を保存する前に**Validate**を実施することを推奨する
 
 **適用手順での補足事項**
-- 5番の作業を行う際に、4番で指定したAccount IDで発行されているUser Keyを設定する、あるいは新たに発行すること
 - 6番の作業を行う際は、Runtimeは、**Node 16.10.0**あるいはそれよりも新しいバージョンを指定すること。また、Periodやlocationは任意の値を選択して問題ない
 - 7番の作業を行う際に、カスタムEventスペース名を**CustomSyntheticICMPPolling**としているが、必要であれば直接変更することができる。変更した場合、サンプルとしてあげるダッシュボードについても、内部で発行しているNRQLのクエリ対象(FROM句)についても適切に更新すること
-- 8番を行う前に**Validate**を実施することを推奨する
 - ICMPポーリング対象は、checksというリストに格納している。このリストに対して、ICMPポーリングを行いたい対象を登録し、不要な対象は削除する。**ip**で指定しているIPアドレスに直接ICMPポーリングを行い、**host**で指定している文字列で表示上のラベルとしている
 
 ---
