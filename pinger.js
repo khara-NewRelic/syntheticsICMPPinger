@@ -50,19 +50,15 @@ function checkEndpoint(item) {
       console.log('ERROR - Ping failed for host ' + item.host + ' (IP ' + item.ip + ') with error: ' + error);
       result = 'failed';
 
-      //Event APIを投げるためのBodyを生成する
-      //options.body = '[{"eventType":"CustomSyntheticsICMPPolling", "Host Name":\"'+ item.host +'\", "Host IP":\"' + item.ip + '\", "Result":"failed","Reason":\"' + error + '\","ResponseTime":'+timeRequired+'}]';
     }
     else {
       //var timeRequired = rcvd - sent
       console.log('Ping successful for host ' + item.host + ' (IP ' + item.ip + '). Response (ms): ' + timeRequired)
       result = 'success';
 
-      //Event APIを投げるためのBodyを生成する
-      //options.body = '[{"eventType":"CustomSyntheticsICMPPolling", "Host Name":\"'+ item.host +'\", "Host IP":\"' + item.ip + '\", "Result":"success","Reason":\"' + error + '\","ResponseTime":'+timeRequired+'}]';
     }
     //Event APIを投げるためのBodyを生成する
-    options.body = '[{"eventType":"CustomSyntheticsICMPPolling", "Host Name":\"'+ item.host +'\", "Host IP":\"' + item.ip + '\", "Result":\"'+ result +'\","Reason":\"' + error + '\","ResponseTime":'+timeRequired+'}]';
+    options.body = '[{"eventType":"CustomSyntheticICMPPolling", "Host Name":\"'+ item.host +'\", "Host IP":\"' + item.ip + '\", "Result":\"'+ result +'\","Reason":\"' + error + '\","ResponseTime":'+timeRequired+'}]';
     //ここでEvent APIを投げる
     console.log(options.body);
     $http.post(options, callback);
