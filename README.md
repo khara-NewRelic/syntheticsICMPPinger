@@ -16,7 +16,7 @@ pinger.js:
     https://docs.newrelic.com/jp/docs/accounts/accounts-billing/account-structure/account-id/
 
 - Event送信する際に利用するAPI Keyを確認あるいは新規作成する
-    - 以下のドキュメントの手順に沿って、API Keyを確認する、あるいは新規で作成する(User Keyを選択する)
+    - 以下のドキュメントの手順に沿って、API Keyを確認する、あるいは新規で作成する(INGEST - LICENSEタイプを選択する)
     https://docs.newrelic.com/jp/docs/apis/intro-apis/new-relic-api-keys/
     **補足:** API Keyを確認や作成を行う際に、利用するAccount IDに紐づけていること
 
@@ -25,7 +25,7 @@ pinger.js:
 2. ログイン後、左のメニュー群からSynthteics Monitoringにアクセスする
 3. 右のモニター一覧の上部にある、"**Secure credentials**"にアクセスする
 4. Secure credentials内にて、**MYACCOUNTID**というKEYで、ご利用になっているAcccount IDの値を設定する
-5. Secure credentials内にて、**MYUSERAPIKEY**というKEYで、事前準備したAPI Key(User Key)の値を設定する
+5. Secure credentials内にて、**MYINGESTAPIKEY**というKEYで、事前準備したAPI Key(INGEST - LICENSEタイプ)の値を設定する
 6. Synthetic上で**Create monitor**ボタンを押し、**Scripted API**を選択する
     - Runtimeは、**Node 16.10.0**あるいはそれよりも新しいバージョンを指定すること
     - Periodやlocationは任意の値を選択して問題ない

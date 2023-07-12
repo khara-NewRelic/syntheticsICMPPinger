@@ -27,7 +27,7 @@ var checks = [
 // Event API Initialization section
 //Define your authentication credentials.
 var myAccountID = $secure.MYACCOUNTID;
-var myAPIKey = $secure.MYUSERAPIKEY;
+var myAPIKey = $secure.MYINGESTAPIKEY;
 
 var options = {
   //Define endpoint URL.
