@@ -45,6 +45,7 @@ var options = {
 };
 
 function checkEndpoint(item) {
+  debug('Ping for host ' + item.host + ' (IP ' + item.ip + ') is about starting...');
   session.pingHost(item.ip, function (error, target, sent, rcvd) {
     debug("error: " + error);
     debug("target: " + target);
