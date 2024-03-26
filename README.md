@@ -53,3 +53,6 @@ pinger.js:
 2024/03/26:
     pinger.jsにデバッグ用のdbug()関数とdebugmode変数を追加した。
     debugmode変数を**true**に変更することで、debug()関数がconsoleにログを残す挙動をとる。今後はdebug()関数を更に内部に記載予定。
+
+2024/03/26:
+    sessionのクローズ時やエラー発生時にdebug()関数経由でコンソールにログを残す様に変更を実施した。

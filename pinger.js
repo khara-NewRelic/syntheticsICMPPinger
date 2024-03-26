@@ -44,6 +44,16 @@ var options = {
       }
 };
 
+// ============== session handling section ==============
+session.on("close", function () {
+  debug("socket closed");
+});
+
+session.on("error", function (error) {
+  debug(error.toString ());
+  session.close ();
+});
+// ======================================================
 function checkEndpoint(item) {
   debug('Ping for host ' + item.host + ' (IP ' + item.ip + ') is about starting...');
   session.pingHost(item.ip, function (error, target, sent, rcvd) {
