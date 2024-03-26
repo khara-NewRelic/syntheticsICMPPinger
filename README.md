@@ -48,3 +48,8 @@ pinger.js:
 例
 <img width="1284" alt="image" src="https://github.com/khara-NewRelic/syntheticsICMPPinger/assets/92971754/ae35e188-a563-4bc5-8e07-1b068801fd93">
 
+---
+**変更履歴:**
+2024/03/26:
+    pinger.jsにデバッグ用のdbug()関数とdebugmode変数を追加した。
+    debugmode変数を**true**に変更することで、debug()関数がconsoleにログを残す挙動をとる。今後はdebug()関数を更に内部に記載予定。

@@ -1,5 +1,8 @@
 // https://github.com/newrelic/quickstarts-synthetics-library/blob/main/library/ICMP/script.js
 
+const debugmode = false; // global variable for debug on-off switch
+debug("ICMP Pinger Script starting...");
+
 var assert = require('assert');
 var ping = require('net-ping');
 
@@ -43,6 +46,7 @@ var options = {
 
 function checkEndpoint(item) {
   session.pingHost(item.ip, function (error, target, sent, rcvd) {
+    debug
     var timeRequired = rcvd - sent;
     var result = '';
     if (error) {
@@ -84,5 +88,16 @@ function callback(error, response, body) {
   console.log("End reached");
 }
 
+function debug(message) {
+  if (debugmode) {
+    console.log("DEBUG: " + message);
+  }
+}
+
+debug("Ping execution section is starting...");
+
 // Check each endpoint
 checks.forEach(checkEndpoint);
+
+debug("Reached the bottom line of execution part.");
+debug("==== details of ICMP ping execution coming after here...  ====");
