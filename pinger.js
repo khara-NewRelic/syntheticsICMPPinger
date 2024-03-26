@@ -46,7 +46,11 @@ var options = {
 
 function checkEndpoint(item) {
   session.pingHost(item.ip, function (error, target, sent, rcvd) {
-    debug
+    debug("error: " + error);
+    debug("target: " + target);
+    debug("sent: " + sent);
+    debug("rcvd: " + rcvd);
+    debug("==========================================");
     var timeRequired = rcvd - sent;
     var result = '';
     if (error) {
