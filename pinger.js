@@ -117,4 +117,6 @@ async function run () {
     await checkEndpoint(checks[i])
   }
 }
+
+run();
 debug("Reached the bottom line of execution part.");
