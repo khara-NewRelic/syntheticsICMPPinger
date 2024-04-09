@@ -54,42 +54,42 @@ session.on("error", function (error) {
   session.close ();
 });
 // ======================================================
-function checkEndpoint(item) {
-  debug('Ping for host ' + item.host + ' (IP ' + item.ip + ') is about starting...');
-  session.pingHost(item.ip, function (error, target, sent, rcvd) {
-    debug("error: " + error);
-    debug("target: " + target);
-    debug("sent: " + sent);
-    debug("rcvd: " + rcvd);
-    debug("==========================================");
-    var timeRequired = rcvd - sent;
-    var result = '';
-    if (error) {
-      //var timeRequired = rcvd - sent
-      console.log('ERROR - Ping failed for host ' + item.host + ' (IP ' + item.ip + ') with error: ' + error);
-      result = 'failed';
-
-    }
-    else {
-      //var timeRequired = rcvd - sent
-      console.log('Ping successful for host ' + item.host + ' (IP ' + item.ip + '). Response (ms): ' + timeRequired)
-      result = 'success';
-
-    }
-    //Event APIを投げるためのBodyを生成する
-    options.body = '[{"eventType":"CustomSyntheticICMPPolling", "Host Name":\"'+ item.host +'\", "Host IP":\"' + item.ip + '\", "Result":\"'+ result +'\","Reason":\"' + error + '\","ResponseTime":'+timeRequired+'}]';
-    //ここでEvent APIを投げる
-    console.log(options.body);
-    $http.post(options, callback);
-
-    checksCompleted++
-    if (checksCompleted == checks.length) {
-      session.close();
-      console.log("All checks were successful.");
-    }
-    else {
-      console.log("More checks to complete. Continuing...");
-    }
+async function checkEndpoint(item) {
+  return new Promise((resolve) => {
+    debug('Ping for host ' + item.host + ' (IP ' + item.ip + ') is about starting...');
+    session.pingHost(item.ip, function (error, target, sent, rcvd) {
+      debug("error: " + error);
+      debug("target: " + target);
+      debug("sent: " + sent);
+      debug("rcvd: " + rcvd);
+      debug("==========================================");
+      var timeRequired = rcvd - sent;
+      var result = '';
+      if (error) {
+        //var timeRequired = rcvd - sent
+        console.log('ERROR - Ping failed for host ' + item.host + ' (IP ' + item.ip + ') with error: ' + error);
+        result = 'failed';
+      }
+      else {
+        //var timeRequired = rcvd - sent
+        console.log('Ping successful for host ' + item.host + ' (IP ' + item.ip + '). Response (ms): ' + timeRequired)
+        result = 'success';
+      }
+      //Event APIを投げるためのBodyを生成する
+      options.body = '[{"eventType":"CustomSyntheticICMPPolling", "Host Name":\"'+ item.host +'\", "Host IP":\"' + item.ip + '\", "Result":\"'+ result +'\","Reason":\"' + error + '\","ResponseTime":'+timeRequired+'}]';
+      //ここでEvent APIを投げる
+      console.log(options.body);
+      $http.post(options, callback);
+      checksCompleted++
+      if (checksCompleted == checks.length) {
+        session.close();
+        console.log("All checks were successful.");
+      }
+      else {
+        console.log("More checks to complete. Continuing...");
+      }
+      resolve()
+    })
   })
 }
 
@@ -111,8 +111,12 @@ function debug(message) {
 
 debug("Ping execution section is starting...");
 
-// Check each endpoint
-checks.forEach(checkEndpoint);
+async function run () {
+  debug("==== details of ICMP ping execution coming after here...  ====");  // Check each endpoint
+  for (let i = 0; i < checks.length; i++) {
+    await checkEndpoint(checks[i])
+  }
+}
 
+run();
 debug("Reached the bottom line of execution part.");
-debug("==== details of ICMP ping execution coming after here...  ====");
