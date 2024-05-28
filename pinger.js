@@ -113,7 +113,6 @@ function debug(message) {
 }
 
 debug("Ping execution section is starting...");
-session.
 
 // Check each endpoint
 checks.forEach(checkEndpoint);
