@@ -27,6 +27,9 @@ var checks = [
   { 'host': 'apple.com', 'ip': '17.253.144.10' },
  ]
 
+// 今後の方針メモ:
+// dns.resolve4()関数の利用による、FQDNからIPアドレスを解決してpingを実行するロジックを検討する
+
 // Event API Initialization section
 //Define your authentication credentials.
 var myAccountID = $secure.MYACCOUNTID;
