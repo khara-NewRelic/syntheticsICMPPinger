@@ -25,7 +25,7 @@ var checks = [
   { 'host': 'amazon.co.jp', 'ip': '52.119.161.5' },
   { 'host': 'rakuten.co.jp', 'ip': '133.237.16.234' },
   { 'host': 'apple.com', 'ip': '17.253.144.10' },
- ]
+]
 
 // 今後の方針メモ:
 // dns.resolve4()関数の利用による、FQDNからIPアドレスを解決してpingを実行するロジックを検討する
